@@ -1,5 +1,6 @@
 package DataBase;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Iterator;
  * 
  * @param <T> Tipo de dato de los elementos a almacenar.
  */
-public class SuperArrayBag<T> implements Iterable<T> {
+public class SuperArrayBag<T extends Comparable<T>> implements Iterable<T> {
     private T[] items;  
     private int count;  
 
@@ -16,9 +17,9 @@ public class SuperArrayBag<T> implements Iterable<T> {
     /**
      * Constructor de la clase.
      */
+    @SuppressWarnings("unchecked")
     public SuperArrayBag() {
-        
-        items = (T[]) new Object[INITIAL_CAPACITY];
+        items = (T[]) new Comparable[INITIAL_CAPACITY]; // Corregido
         count = 0;
     }
 
@@ -28,11 +29,13 @@ public class SuperArrayBag<T> implements Iterable<T> {
      * @param item Elemento a agregar.
      */
     public void add(T item) {
-        
         if (count == items.length) {
             resize(items.length * 2);  
         }
         items[count++] = item;
+    }
+     public void sort() {
+        Arrays.sort(items, 0, count); 
     }
 
     /**
@@ -43,6 +46,13 @@ public class SuperArrayBag<T> implements Iterable<T> {
     public boolean isEmpty() {
         return count == 0;
     }
+    
+    public T get(int index) {
+    if (index < 0 || index >= count) {
+        throw new IndexOutOfBoundsException("Índice fuera de los límites: " + index);
+    }
+    return items[index];
+}
 
     /**
      * Método que devuelve la cantidad de elementos en la bolsa.
@@ -69,13 +79,29 @@ public class SuperArrayBag<T> implements Iterable<T> {
      * @param capacity Nueva capacidad del arreglo.
      */
     private void resize(int capacity) {        
-        T[] newItems = (T[]) new Object[capacity];
-       
+        @SuppressWarnings("unchecked")
+        T[] newItems = (T[]) new Comparable[capacity]; // Corregido
         for (int i = 0; i < count; i++) {
             newItems[i] = items[i];
         }
-       
         items = newItems;
+    }
+
+    public int rank(T key) {
+        int low = 0, high = count - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int comparation = key.compareTo(items[mid]);
+
+            if (comparation < 0)
+                high = mid - 1;
+            else if (comparation > 0)
+                low = mid + 1;
+            else
+                return mid;
+        }
+        return low;
     }
 
     /**
