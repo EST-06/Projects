@@ -1,22 +1,31 @@
 package Ejecutable;
 
-import DataBase.FileManager;
-import DataBase.SuperArrayBag;
-import DataBase.UserData;
+import Functions.fullVerifier;
+import java.util.Scanner;
 
-import java.io.IOException;
 
 public class ProyectoPromedioBeca {
 
     public static void main(String[] args) {
-        try {
-            // Suponiendo que el archivo está en la ruta correcta
-            SuperArrayBag<UserData> userBag = FileManager.fileLecture("src/data/data.txt");
-
-            // Imprimir los datos de los usuarios
-            FileManager.printUserData(userBag);
-        } catch (IOException e) {
-            e.printStackTrace();
+        String name, pasword;
+        fullVerifier fv = new fullVerifier();
+        UserData ud = new UserData();
+        Scanner key = new Scanner(System.in);
+        
+        
+        
+        System.out.println("Ingrese el nombre y contraseña:");
+        System.out.print("NOMBRE:");
+        name = key.next();
+        System.out.println("CONTRASEÑA:");
+        pasword = key.next();
+        
+        if (fv.isOk(0, 0)) {
+            
         }
+        
+        
+        
+        
     }
 }

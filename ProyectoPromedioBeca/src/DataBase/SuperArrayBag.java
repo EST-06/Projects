@@ -7,7 +7,7 @@ import java.util.Iterator;
  * 
  * @param <T> Tipo de dato de los elementos a almacenar.
  */
-public class SuperArrayBag<T> implements Iterable<T> {
+public class SuperArrayBag<T extends Comparable<T>> implements Iterable<T> {
     private T[] items;  
     private int count;  
 
@@ -76,6 +76,23 @@ public class SuperArrayBag<T> implements Iterable<T> {
         }
        
         items = newItems;
+    }
+    
+    public int rank(T key) {
+        int low = 0, high = count - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int comparation = key.compareTo(items[mid]);
+
+            if (comparation < 0)
+                high = mid - 1;
+            else if (comparation > 0)
+                low = mid + 1;
+            else
+                return mid;
+        }
+        return low;
     }
 
     /**
