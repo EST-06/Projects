@@ -1,29 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package Aplications;
 
-/**
- *
- * @author Esteban
- */
 import Estudiantes.Estudiante;
 import Estudiantes.RegistroEstudiantes;
-import Proxy.Proxy;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-
         RegistroEstudiantes registro = new RegistroEstudiantes();
-        boolean flag = true;
-
-        Proxy proxy = new Proxy();
-
         Scanner sc = new Scanner(System.in);
-        String nombre, contrasena;
+        boolean flag = true;
 
         System.out.println("Bienvenido al sistema de becas.");
 
@@ -35,39 +20,48 @@ public class Main {
             sc.nextLine();
 
             if (opcion == 1) {
-
                 System.out.print("Ingrese su nombre: ");
-                nombre = sc.nextLine().toLowerCase();
+                String nombre = sc.nextLine().toLowerCase();
                 System.out.print("Ingrese su contraseña: ");
-                contrasena = sc.nextLine();
+                String contrasena = sc.nextLine();
 
                 if (!registro.existeEstudiante(nombre)) {
-                    System.out.println("Credenciales incorrectas. No se puede acceder al sistema.");
+                    System.out.println("Credenciales incorrectas. Intente nuevamente.");
                     continue;
                 }
 
                 Estudiante estudianteLogueado = registro.getEstudiante(nombre);
-
                 if (!estudianteLogueado.getContrasena().equals(contrasena)) {
-                    System.out.println("Credenciales incorrectas. No se puede acceder al sistema.");
+                    System.out.println("Contraseña incorrecta. Intente nuevamente.");
                     continue;
                 }
 
                 System.out.println("Bienvenido " + estudianteLogueado.getNombre());
 
-                System.out.println("¿Desea postularse a la beca?");
+                System.out.println("¿Desea conocer su promedio?");
                 System.out.println("1. Sí");
                 System.out.println("2. No");
                 System.out.print("Selecciona una opción: ");
-                int postularOpcion = sc.nextInt();
+                int opcionPromedio = sc.nextInt();
 
-                if (postularOpcion == 1) {
-                    proxy.verificarBeca(estudianteLogueado); 
+                if (opcionPromedio == 1) {
+                    estudianteLogueado.mostrarPromedio();
                 }
+
+                System.out.println("¿Desea postularse para la beca?");
+                System.out.println("1. Sí");
+                System.out.println("2. No");
+                System.out.print("Selecciona una opción: ");
+                int opcionBeca = sc.nextInt();
+
+                if (opcionBeca == 1) {
+                    estudianteLogueado.verificarBeca();
+                }
+
                 flag = false;
             } else {
                 System.out.println("¡Hasta luego!");
-                break;
+                flag = false;
             }
         }
     }

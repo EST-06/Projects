@@ -1,14 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Estudiantes;
-
-/**
- *
- * @author Esteban
- */
-import java.util.Scanner;
 
 public class EstudianteConBono extends Estudiante {
 
@@ -25,7 +15,8 @@ public class EstudianteConBono extends Estudiante {
         return suma / getNotas().length;
     }
 
-    public double obtenerBono() {
-        return 0.05; 
+    @Override
+    public boolean tieneBono() {
+        return true; 
     }
 }

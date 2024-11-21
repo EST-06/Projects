@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Estudiantes;
 
-/**
- *
- * @author Esteban
- */
-public abstract class Estudiante {
+import Beca.Beca;
 
+public abstract class Estudiante {
     private String nombre;
     private String contrasena;
     private double[] notas;
@@ -25,12 +18,34 @@ public abstract class Estudiante {
     }
 
     public String getContrasena() {
-        return contrasena; 
+        return contrasena;
     }
 
     public double[] getNotas() {
         return notas;
     }
 
+    public void mostrarPromedio() {
+        double promedio = calcularPromedio();
+        System.out.println("El promedio de " + nombre + " es: " + promedio);
+    }
+
+    public void verificarBeca() {
+        Beca beca = new Beca();
+        double promedio = calcularPromedio();
+        boolean tieneBono = tieneBono();
+
+        double porcentajeBeca = beca.calcularPorcentaje(promedio, tieneBono);
+
+        if (porcentajeBeca > 0) {
+            System.out.println("El estudiante califica para una beca del " + (porcentajeBeca * 100) + "%.");
+        } else {
+            System.out.println("El estudiante no califica para una beca.");
+        }
+    }
+
+   
     public abstract double calcularPromedio();
+
+    public abstract boolean tieneBono();
 }

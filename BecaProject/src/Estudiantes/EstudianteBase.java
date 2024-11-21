@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Estudiantes;
 
-/**
- *
- * @author Esteban
- */
 public class EstudianteBase extends Estudiante {
 
     public EstudianteBase(String nombre, String contrasena, double[] notas) {
@@ -21,5 +13,10 @@ public class EstudianteBase extends Estudiante {
             suma += nota;
         }
         return suma / getNotas().length;
+    }
+
+    @Override
+    public boolean tieneBono() {
+        return false; 
     }
 }
