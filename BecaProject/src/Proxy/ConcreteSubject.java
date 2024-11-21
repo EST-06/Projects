@@ -1,32 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Proxy;
 
 import Estudiantes.Estudiante;
-import Estudiantes.EstudianteConBono;
+import Beca.Beca;
 
 /**
- *
- * @author Esteban
+ * autor: Esteban
  */
 public class ConcreteSubject {
-   
-    public void verificarBeca(Estudiante estudiante) {
-        System.out.println("Verificando beca para " + estudiante.getNombre() + "...");
+
+    public void mostrarPromedio(Estudiante estudiante) {
         double promedio = estudiante.calcularPromedio();
-        
-        if (promedio >= 4.5) {
-            System.out.println("El estudiante tiene un promedio de: " + promedio);
-            if (estudiante instanceof EstudianteConBono) {
-                double bono = ((EstudianteConBono) estudiante).obtenerBono();
-                System.out.println("Bono del 5% otorgado. El promedio final es: " + (promedio * (1 + bono)));
-            } else {
-                System.out.println("El estudiante califica para la beca base de 15%.");
-            }
+        System.out.println("El promedio del estudiante " + estudiante.getNombre() + " es: " + promedio);
+    }
+
+    public void verificarBeca(Estudiante estudiante) {        
+        double promedio = estudiante.calcularPromedio();
+        boolean tieneBono = estudiante.tieneBono();
+
+        Beca beca = new Beca();
+        double porcentajeBeca = beca.calcularPorcentaje(promedio, tieneBono);
+
+        if (porcentajeBeca > 0) {
+            System.out.println("El estudiante " + estudiante.getNombre() + " califica para una beca del " + (porcentajeBeca * 100) + "%.");
         } else {
-            System.out.println("El estudiante no califica para la beca.");
+            System.out.println("El estudiante " + estudiante.getNombre() + " no califica para una beca.");
         }
     }
 }

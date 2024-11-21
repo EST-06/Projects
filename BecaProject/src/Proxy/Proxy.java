@@ -1,24 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Proxy;
 
 import Estudiantes.Estudiante;
 
 /**
- *
- * @author Esteban
+ * autor: Esteban
  */
-public class Proxy {
+public class Proxy extends Subject {
     private ConcreteSubject concreteSubject;
 
     public Proxy() {
         concreteSubject = new ConcreteSubject();
     }
 
-    public void verificarBeca(Estudiante estudiante) {        
-        System.out.println("Verificando beca para " + estudiante.getNombre() + "...");        
-        concreteSubject.verificarBeca(estudiante);
+    @Override
+    public void verificarAcceso(Estudiante estudiante, String accion) {
+        System.out.println("Accediendo al sistema de becas como " + estudiante.getNombre() + "...");
+
+        switch (accion.toLowerCase()) {
+            case "calcularpromedio":
+                concreteSubject.mostrarPromedio(estudiante);
+                break;
+            case "verificarbeca":
+                concreteSubject.verificarBeca(estudiante);
+                break;
+            default:
+                System.out.println("Acción no reconocida.");
+                break;
+        }
     }
 }
+

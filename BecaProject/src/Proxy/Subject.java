@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Proxy;
 
 import Estudiantes.Estudiante;
 
 /**
- *
- * @author Esteban
+ * autor: Esteban
  */
 public abstract class Subject {
-    public abstract void verificarBeca(Estudiante estudiante);
+    public abstract void verificarAcceso(Estudiante estudiante, String accion);
 }
-
