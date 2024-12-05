@@ -17,7 +17,7 @@ public class ArrayList<T> implements Iterable<T> {
     }
 
     private void addFirst(T item) {
-        shiftRight();
+        shiftRight(0);
         array[0] = item;
         count++;
     }
@@ -31,6 +31,8 @@ public class ArrayList<T> implements Iterable<T> {
             addLast(item);
             return;
         }
+        shiftRight( index);
+        array[index] = item;
         
         
         
@@ -41,16 +43,17 @@ public class ArrayList<T> implements Iterable<T> {
             reSize(array.length * 2);
         }
         array[count + 1] = item;
+        count++;
     }
 
-    private void shiftRight() {
+    private void shiftRight(int steps) {
         if (isEmpty()) {
             return;
         }
         if (count == array.length - 1) {
             reSize(array.length * 2);
         }      
-        for (int i = count; i >= 0; i--) {
+        for (int i = count; i >= steps; i--) {
             array[i + 1] = array[i];
         }
 

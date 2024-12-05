@@ -18,7 +18,10 @@ public class main {
         int opcion;
         
         while(flag){
-            System.out.println("1.Agregar dato (index - info)\n2.Mostrar arreglon\n3.Salir");
+            System.out.println("1.Agregar dato (index - info)"
+                    + "\n2.Mostrar arreglon"
+                    + "\n3.Salir");
+            
             opcion = key.nextInt();
             
             switch(opcion){
