@@ -5,6 +5,7 @@ import java.util.Iterator;
 /**
  *
  * @author Esteban
+ * @param <T>
  */
 public class ArrayList<T> implements Iterable<T> {
 
@@ -17,7 +18,7 @@ public class ArrayList<T> implements Iterable<T> {
     }
 
     private void addFirst(T item) {
-        shiftRight(0);
+        shiftRight(0, 1);
         array[0] = item;
         count++;
     }
@@ -31,11 +32,29 @@ public class ArrayList<T> implements Iterable<T> {
             addLast(item);
             return;
         }
-        shiftRight( index);
+        shiftRight( index, 1);
         array[index] = item;
+    }
+    
+    public void addGroup(int index, T[] group){
+        if (count + group.length  >= array.length - 1) {
+            reSize(array.length * 2 + group.length);
+        }
         
-        
-        
+        shiftRight(index, group.length);
+        for (int i = 0; i < group.length; i++) {
+            array[i + index] = group[i];
+        }
+        count += group.length;
+    
+    }
+    
+    public boolean changeIndex (int index, T item){
+        if (index > count) {
+            return false;            
+        }        
+        array[index] = item;
+        return true;
     }
 
     private void addLast(T item) {
@@ -46,15 +65,15 @@ public class ArrayList<T> implements Iterable<T> {
         count++;
     }
 
-    private void shiftRight(int steps) {
+    private void shiftRight(int index, int steps) {
         if (isEmpty()) {
             return;
         }
         if (count == array.length - 1) {
             reSize(array.length * 2);
         }      
-        for (int i = count; i >= steps; i--) {
-            array[i + 1] = array[i];
+        for (int i = count; i >= index; i--) {
+            array[i + steps] = array[i];
         }
 
     }
