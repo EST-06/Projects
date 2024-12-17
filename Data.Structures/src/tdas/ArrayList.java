@@ -22,37 +22,52 @@ public class ArrayList<T> implements Iterable<T> {
         array[0] = item;
         count++;
     }
-    
-    public void add(int index, T item){
+
+    public void add(int index, T item) {
         if (index == 0) {
             addFirst(item);
             return;
         }
-        if (index == count + 1 ) {
+        if (index == count + 1) {
             addLast(item);
             return;
         }
-        shiftRight( index, 1);
+        shiftRight(index, 1);
         array[index] = item;
     }
-    
-    public void addGroup(int index, T[] group){
-        if (count + group.length  >= array.length - 1) {
+
+    private void removeGarbage(int starPos, int finalPos) {
+        for (int i = starPos; i <= finalPos; i++) {
+            array[starPos] = null;
+        }
+    }
+
+    public void addGroup(int index, T[] group) {
+        if (count + group.length >= array.length - 1) {
             reSize(array.length * 2 + group.length);
         }
-        
+
         shiftRight(index, group.length);
         for (int i = 0; i < group.length; i++) {
             array[i + index] = group[i];
         }
         count += group.length;
-    
+
     }
     
-    public boolean changeIndex (int index, T item){
+    public void deleteGroup(int starPos, int finalPos){                
+        int steps = finalPos - starPos +1;
+        
+        shiftLeft(finalPos, steps);
+        removeGarbage(starPos + steps, count);
+        count -= steps;
+        
+    }
+
+    public boolean changeIndex(int index, T item) {
         if (index > count) {
-            return false;            
-        }        
+            return false;
+        }
         array[index] = item;
         return true;
     }
@@ -71,7 +86,7 @@ public class ArrayList<T> implements Iterable<T> {
         }
         if (count == array.length - 1) {
             reSize(array.length * 2);
-        }      
+        }
         for (int i = count; i >= index; i--) {
             array[i + steps] = array[i];
         }
@@ -80,14 +95,70 @@ public class ArrayList<T> implements Iterable<T> {
 
     private void reSize(int size) {
         T[] temp = (T[]) new Object[size];
-        for (int i = 0; i <= count ; i++) {
+        for (int i = 0; i <= count; i++) {
             temp[i] = array[i];
         }
         array = temp;
     }
 
+    private void deleteFirst() {
+        array[0] = null;
+        shiftLeft(0, 1);
+        removeGarbage(count, count);
+        count--;
+
+    }
+
+    private void deleteLast() {
+        array[count] = null;
+        count--;
+    }
+
+    public void delete(int index) {
+        if (index == 0) {
+            deleteFirst();
+            return;
+        }
+        if (index == count) {
+            deleteLast();
+            return;
+        }
+        
+        shiftLeft(index, 1);
+        array[count] = null;
+        count--;
+
+    }
+    private void shiftLeft(int index, int steps) {       
+        for (int i = index + 1; i <= count; i++) {            
+            array[i - steps] = array[i];
+        }
+    }
+    
+    public T exixtence(int index){
+        return array[index];
+    }
+    
+
     public boolean isEmpty() {
         return count == -1;
+    }
+
+    public int size() {
+        return count + 1;
+    }
+    
+    public boolean cointains (T item){
+        if (isEmpty()) {
+            return false;            
+        }
+        for(T element: array){
+            if (element.equals(item)) {
+                return true;
+            }
+        }
+            
+        return false;
     }
 
     public String showArray() {
