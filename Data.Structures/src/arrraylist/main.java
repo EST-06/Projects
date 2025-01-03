@@ -29,7 +29,9 @@ public class main {
                     + "\n9.Eliminar x dato"
                     + "\n10.Existencia de un dato"
                     + "\n11.Eliminar un conjunto"
-                    + "\n12.Mostrar dato en posicion especifica");
+                    + "\n12.Mostrar dato en posicion especifica"
+                    + "\n13.Remover duplicados de una info especifica"
+                    + "\n14.Remover todos los duplicados");
             
             opcion = key.nextInt();
             
@@ -123,6 +125,14 @@ public class main {
                     index = key.nextInt();
                     System.out.println(lista.exixtence(index - 1));                    
                    break;                   
+                case 13:
+                    System.out.println("Informacion a verificar");
+                    info = key.nextInt();
+                    lista.removeConcurrences(info);
+                    break;
+                case 14:
+                    lista.removeAllConcurrences();
+                    break;
                 default:
                     System.out.println("Una opcion disponible por favor");
                     break;
