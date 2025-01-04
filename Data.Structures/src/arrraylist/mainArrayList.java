@@ -6,7 +6,7 @@ import tdas.*;
  *
  * @author Esteban
  */
-public class main {
+public class mainArrayList {
 
     /**
      * @param args the command line arguments
