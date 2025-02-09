@@ -1,4 +1,4 @@
-package arrraylist;
+package mains;
 
 import java.util.Scanner;
 import tdas.Queue;
