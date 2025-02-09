@@ -1,4 +1,4 @@
-package arrraylist;
+package mains;
 import java.util.Scanner;
 import tdas.*;
 
@@ -6,13 +6,13 @@ import tdas.*;
  *
  * @author Esteban
  */
-public class main {
+public class mainArrayList {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList lista = new ArrayList<Integer>();
+       /* ArrayList lista = new ArrayList<Integer>();
         Scanner key = new Scanner(System.in);
         boolean flag = true;
         int opcion;
@@ -138,7 +138,7 @@ public class main {
                     break;
                     
             }
-        }
+        }*/
     }
     
 }
