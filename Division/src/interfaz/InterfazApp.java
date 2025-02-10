@@ -1,5 +1,6 @@
 package interfaz;
 
+import controlador.Controlador;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
@@ -9,12 +10,14 @@ import javax.swing.*;
  */
 public class InterfazApp extends JFrame {
     
-    private PanelOperandos operandos;
-    private PanelOperadores operadores;
+    private PanelOperandos pnlOperandos;
+    private PanelOperadores pnlOperadores;
+    private PanelResultado pnlResultado;
     
-    public InterfazApp() {
-        operandos = new PanelOperandos();
-        operadores = new PanelOperadores();
+    public InterfazApp(Controlador ctrl) {
+        pnlOperandos = new PanelOperandos();
+        pnlOperadores = new PanelOperadores();
+        pnlResultado = new PanelResultado(ctrl);
         
         this.setLayout(null);
         
@@ -23,18 +26,19 @@ public class InterfazApp extends JFrame {
         this.setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        operandos.setBounds(10, 10, 450, 80);
-        add(operandos);
+        pnlOperandos.setBounds(10, 10, 450, 80);
+        pnlOperadores.setBounds(10,92, 450, 50);
+        pnlResultado.setBounds(10, 145, 450, 75);
+        add(pnlOperandos);
+        add(pnlOperadores);
+        add(pnlResultado);
                 
-        operadores.setBounds(10, 92, 450, 60);
-        add(operadores);
-        
-        //add(operandos, BorderLayout.NORTH);
-        //add(operadores, BorderLayout.NORTH);
+       
     }
     
     public static void main(String[] args) {
-        InterfazApp frmMain = new InterfazApp();
+        Controlador ctrl = new Controlador();
+        InterfazApp frmMain = new InterfazApp(ctrl);
         frmMain.setVisible(true);
     }
     

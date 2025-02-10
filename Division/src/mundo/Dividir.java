@@ -10,21 +10,21 @@ public class Dividir {
     
     public Dividir(double divisor, double dividendo){
         this.divisor = divisor;
-        this.dividendo = dividendo;        
+        this.dividendo = dividendo;
+        division();
     }
     
-    public void division(){
-        cociente = (int)(dividendo/divisor);
+    private void division(){
+        cociente = dividendo/divisor;        
         resto = (int)(dividendo%divisor);
     }
-    
-    public void divisionReal(){
-        cociente = dividendo/divisor;
-        resto = (int)(dividendo%divisor);
-    }
-
+        
     public double getCociente() {
         return cociente;
+    }
+    
+    public int getCocienteEntero(){
+        return (int)cociente;
     }
 
     public int getResto() {

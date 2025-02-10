@@ -18,8 +18,7 @@ public class PanelOperadores extends JPanel {
 
     public PanelOperadores() {
         setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new TitledBorder("Operandores")));
-        setLayout(new GridLayout(1, 3));
-        setPreferredSize(new Dimension(400, 75));          
+        setLayout(new GridLayout(1, 3));                
         Options();
     }
     
@@ -35,7 +34,5 @@ public class PanelOperadores extends JPanel {
         add(cociente);
         
     }
-    
-    
-    
+
 }
