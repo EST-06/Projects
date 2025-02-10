@@ -19,8 +19,7 @@ public class PanelOperandos extends JPanel {
 
     public PanelOperandos() {
         setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new TitledBorder("Operandos")));
-        setLayout(new GridLayout(2, 2));
-        setPreferredSize(new Dimension(400, 75));
+        setLayout(new GridLayout(2, 2));        
         textFields();
 
     }
