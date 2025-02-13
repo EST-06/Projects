@@ -48,13 +48,7 @@ public class PanelOperandos extends JPanel {
         return divisor;
     }
 
-    public void setDividendo(JTextField dividendo) {
-        this.dividendo = dividendo;
-    }
-
-    public void setDivisor(JTextField divisor) {
-        this.divisor = divisor;
-    }
+    
 
     
 }

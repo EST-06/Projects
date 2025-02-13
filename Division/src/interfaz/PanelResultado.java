@@ -18,16 +18,19 @@ import javax.swing.border.TitledBorder;
 public class PanelResultado extends JPanel {
 
     private JTextField resultado;
+    private Controlador ctrl;
+    private JButton execute;
+    
 
-    public PanelResultado(Controlador ctrl) {
+    public PanelResultado() {
         setBorder(new CompoundBorder(new EmptyBorder(0, 0, 0, 0), new TitledBorder("Resultado")));
         setLayout(new BorderLayout());
         resultado();
-        button(ctrl);
+        button();
         
     }
     
-    public void resultado(){
+    private void resultado(){
         removeAll();        
         resultado = new JTextField("");
         resultado.setPreferredSize(new Dimension(250,45));
@@ -37,13 +40,21 @@ public class PanelResultado extends JPanel {
         repaint();
     }
     
-    public void button(Controlador ctrl){
-        JButton execute = new JButton("Ejecutar");        
+    private void button(){
+        execute = new JButton("Ejecutar");        
         add(execute, BorderLayout.EAST);                               
     }
+    
+    public void actionButton(Controlador ctrl){
+        this.ctrl = ctrl;
+        execute.addActionListener(e ->{
+         ctrl.validation();
+        });
+        
+    }
 
-    public void setResultado(JTextField resultado) {
-        this.resultado = resultado;
+    public void setResultado(double resultado) {
+        this.resultado.setText(resultado+"");
     }
     
     

@@ -6,7 +6,7 @@ package mundo;
  */
 public class Dividir {
     double divisor, dividendo, cociente;
-    int resto;
+    double resto;
     
     public Dividir(double divisor, double dividendo){
         this.divisor = divisor;
@@ -16,7 +16,7 @@ public class Dividir {
     
     private void division(){
         cociente = dividendo/divisor;        
-        resto = (int)(dividendo%divisor);
+        resto = (dividendo%divisor);
     }
         
     public double getCociente() {
@@ -27,7 +27,7 @@ public class Dividir {
         return (int)cociente;
     }
 
-    public int getResto() {
+    public double getResto() {
         return resto;
     }
     
