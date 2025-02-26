@@ -26,7 +26,16 @@ public class panelVidas extends JPanel{
     }    
  
  public void vidas(){
-     imagen1 = new ImageIcon("/src/imagenes/die.png");
-     JLabel label = new JLabel(imagen1);
+     imagen1 = new ImageIcon(getClass().getResource("/imagenes/die.png"));     
+     JLabel vida1 = new JLabel(imagen1);
+     add(vida1);
+     
+     imagen2 = new ImageIcon(getClass().getResource("/imagenes/die.png"));     
+     JLabel vida2 = new JLabel(imagen2);
+     add(vida2);
+     
+     imagen3 = new ImageIcon(getClass().getResource("/imagenes/die.png"));     
+     JLabel vida3 = new JLabel(imagen3);
+     add(vida3);
  }
 }
