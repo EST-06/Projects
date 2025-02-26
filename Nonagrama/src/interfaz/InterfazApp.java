@@ -8,6 +8,7 @@ import javax.swing.JFrame;
  */
 public class InterfazApp extends JFrame{
     panelBotones pnlB = new panelBotones();
+    panelVidas pnlV = new panelVidas();
 
     public InterfazApp() {
         this.setLayout(null);
@@ -19,6 +20,9 @@ public class InterfazApp extends JFrame{
         
         pnlB.setBounds(135, 200, 400, 400);
         add(pnlB);
+        
+        pnlV.setBounds(10, 10, 150, 150);
+        add(pnlV);
     }
 
     
