@@ -31,14 +31,14 @@ public class panelBotones extends JPanel {
                 execute.setBackground(Color.WHITE);
                 
                 //VERIFICAR LO SIGUIENTE
-                int grosor = 2;
+                /*int grosor = 2;
                 int top = (fila % 5 == 0) ? grosor : 1;
                 int left = (columna % 5 == 0) ? grosor : 1;
                 int bottom = ((fila + 1) % 5 == 0) ? grosor : 1;
                 int right = ((columna + 1) % 5 == 0) ? grosor : 1;
                 execute.setBorder(new MatteBorder(top, left, bottom, right, Color.BLACK));                
                 //HASTA ANTES
-                
+                */
                 add(execute);
             }
         }

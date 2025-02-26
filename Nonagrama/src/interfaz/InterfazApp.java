@@ -14,14 +14,14 @@ public class InterfazApp extends JFrame{
         this.setLayout(null);
         
         this.setTitle("Nonograma");
-        this.setSize(700, 700);
+        this.setSize(500, 500);
         this.setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        pnlB.setBounds(135, 200, 400, 400);
+        pnlB.setBounds(100, 100, 300, 300);
         add(pnlB);
         
-        pnlV.setBounds(10, 10, 150, 150);
+        pnlV.setBounds(190, 10, 120, 40);
         add(pnlV);
     }
 
