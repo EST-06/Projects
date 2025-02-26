@@ -3,6 +3,8 @@ package interfaz;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.border.CompoundBorder;
@@ -29,9 +31,25 @@ public class panelBotones extends JPanel {
             for (int columna = 0; columna < 10; columna++) {
                 JButton execute = new JButton();
                 execute.setBackground(Color.WHITE);
-                
-                //VERIFICAR LO SIGUIENTE
-                /*int grosor = 2;
+             execute.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        if (e.getButton() == MouseEvent.BUTTON1) {   
+                            //Izq
+                            execute.setText("x");
+                        } else if (e.getButton() == MouseEvent.BUTTON3) {
+                            //Der                            
+                            execute.setBackground(Color.BLACK);
+                        }
+                    }
+                });                            
+                add(execute);
+            }
+        }
+    }
+}
+//VERIFICAR LO SIGUIENTE
+                /*  int grosor = 2;
                 int top = (fila % 5 == 0) ? grosor : 1;
                 int left = (columna % 5 == 0) ? grosor : 1;
                 int bottom = ((fila + 1) % 5 == 0) ? grosor : 1;
@@ -39,8 +57,3 @@ public class panelBotones extends JPanel {
                 execute.setBorder(new MatteBorder(top, left, bottom, right, Color.BLACK));                
                 //HASTA ANTES
                 */
-                add(execute);
-            }
-        }
-    }
-}
